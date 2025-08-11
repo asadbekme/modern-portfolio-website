@@ -2,24 +2,37 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const t = useTranslations("navigation");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: t("home"), href: "#home" },
+    { name: t("projects"), href: "#projects" },
+    { name: t("skills"), href: "#skills" },
+    { name: t("about"), href: "#about" },
+    { name: t("contact"), href: "#contact" },
+  ];
+
+  const languages = [
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "ru", name: "Русский", flag: "🇷🇺" },
+    { code: "uz", name: "O'zbek", flag: "🇺🇿" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -28,6 +41,12 @@ const Header = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
+  };
+
+  const changeLanguage = (newLocale: string) => {
+    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPathname);
+    setIsLangOpen(false);
   };
 
   return (
@@ -61,8 +80,48 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Theme Toggle & Mobile Menu */}
+          {/* Controls */}
           <div className="flex items-center space-x-4">
+            {/* Language Selector */}
+            <div className="relative">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 flex items-center space-x-2"
+              >
+                <Globe size={20} />
+                <span className="text-sm font-medium">
+                  {languages.find((lang) => lang.code === locale)?.flag}
+                </span>
+              </motion.button>
+
+              {isLangOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 min-w-[150px]"
+                >
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-3 ${
+                        locale === lang.code
+                          ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
+                          : ""
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span className="text-sm">{lang.name}</span>
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+
+            {/* Theme Toggle */}
             {mounted && (
               <motion.button
                 whileHover={{ scale: 1.1 }}

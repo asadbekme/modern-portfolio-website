@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Bosh sahifa",
+    "projects": "Loyihalar",
+    "skills": "Ko'nikmalar",
+    "about": "Men haqimda",
+    "contact": "Aloqa"
+  },
+  "hero": {
+    "name": "Jon Dou",
+    "profession": "Frontend Dasturchi",
+    "description": "Zamonaviy texnologiyalar yordamida chiroyli, moslashuvchan va foydalanuvchilarga qulay veb-tajribalarni yarataman. Toza kod va innovatsion yechimlarni sevaman.",
+    "viewProjects": "Loyihalarni ko'rish",
+    "contactMe": "Men bilan bog'lanish"
+  },
+  "projects": {
+    "title": "Tanlangan loyihalar",
+    "description": "Mening ko'nikmalarim va veb-dasturlashga bo'lgan muhabbatimni ko'rsatadigan so'nggi loyihalarimdan ba'zilari.",
+    "liveDemo": "Jonli demo",
+    "code": "Kod",
+    "ecommerce": {
+      "title": "E-Commerce platformasi",
+      "description": "React, Node.js va MongoDB bilan to'liq elektron tijorat yechimi. Foydalanuvchi autentifikatsiyasi, to'lov jarayoni va admin paneli mavjud."
+    },
+    "taskManager": {
+      "title": "Vazifalarni boshqarish ilovasi",
+      "description": "Next.js va Firebase bilan yaratilgan hamkorlikdagi vazifalarni boshqarish ilovasi. Real vaqtda yangilanishlar va jamoa hamkorligi imkoniyatlari."
+    },
+    "weatherDashboard": {
+      "title": "Ob-havo paneli",
+      "description": "Joylashuvga asoslangan prognozlar, interaktiv diagrammalar va chiroyli animatsiyalar bilan moslashuvchan ob-havo paneli."
+    }
+  },
+  "skills": {
+    "title": "Texnologiyalar va vositalar",
+    "description": "Kengaytiriladigan va samarali veb-ilovalarni yaratish uchun zamonaviy texnologiyalar bilan ishlayman.",
+    "stats": {
+      "experience": "Yillik tajriba",
+      "projects": "Tugallangan loyihalar",
+      "technologies": "Texnologiyalar",
+      "satisfaction": "Mijozlar mamnunligi"
+    }
+  },
+  "about": {
+    "title": "Men haqimda",
+    "description": "Men 5+ yillik tajribaga ega bo'lgan, chiroyli, funktsional va foydalanuvchilarga yo'naltirilgan raqamli tajribalarni yaratishda ishtiyoqli Frontend dasturchiman. Murakkab muammolarni oddiy, chiroyli va intuitiv yechimlarga aylantirishni yaxshi ko'raman.",
+    "location": "San-Fransisko, Kaliforniya",
+    "availability": "Frilanser ish uchun mavjud",
+    "education": "Kompyuter fanlari, Stenford universiteti",
+    "whatIDo": "Men nima qilaman",
+    "services": {
+      "webDevelopment": "Veb dasturlash",
+      "uiuxDesign": "UI/UX dizayn",
+      "mobileApps": "Mobil ilovalar",
+      "performanceOptimization": "Ishlash optimallashtirish"
+    }
+  },
+  "contact": {
+    "title": "Bog'laning",
+    "description": "Loyiha g'oyangiz bormi? Ajoyib narsa yaratish uchun birga ishlaylik.",
+    "letsConnect": "Bog'lanaylik",
+    "intro": "Men har doim yangi loyihalar va imkoniyatlar haqida eshitishdan manfaatdorman. Siz ishga olmoqchi bo'lgan kompaniya yoki hamkorlik qilmoqchi bo'lgan dasturchi bo'lishingizdan qat'i nazar, sizdan eshitishni xohlayman.",
+    "form": {
+      "firstName": "Ism",
+      "lastName": "Familiya",
+      "email": "Elektron pochta",
+      "subject": "Mavzu",
+      "message": "Xabar",
+      "messagePlaceholder": "Loyihangiz haqida gapirib bering...",
+      "send": "Xabar yuborish"
+    },
+    "social": {
+      "email": "Elektron pochta",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "footer": {
+    "copyright": "Jon Dou. Quyidagilar bilan yaratilgan",
+    "coffee": "va ko'p qahva ☕",
+    "backToTop": "Yuqoriga ↑"
+  }
+}

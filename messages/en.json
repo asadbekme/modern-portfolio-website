@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "John Doe",
+    "profession": "Frontend Developer",
+    "description": "Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. Passionate about clean code and innovative solutions.",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "description": "Here are some of my recent projects that showcase my skills and passion for web development.",
+    "liveDemo": "Live Demo",
+    "code": "Code",
+    "ecommerce": {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard."
+    },
+    "taskManager": {
+      "title": "Task Management App",
+      "description": "A collaborative task management application built with Next.js and Firebase. Real-time updates and team collaboration features."
+    },
+    "weatherDashboard": {
+      "title": "Weather Dashboard",
+      "description": "A responsive weather dashboard with location-based forecasts, interactive charts, and beautiful animations."
+    }
+  },
+  "skills": {
+    "title": "Technologies & Tools",
+    "description": "I work with modern technologies to build scalable and efficient web applications.",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Completed",
+      "technologies": "Technologies",
+      "satisfaction": "Client Satisfaction"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a passionate Frontend Developer with 5+ years of experience creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+    "location": "San Francisco, CA",
+    "availability": "Available for freelance work",
+    "education": "Computer Science, Stanford University",
+    "whatIDo": "What I Do",
+    "services": {
+      "webDevelopment": "Web Development",
+      "uiuxDesign": "UI/UX Design",
+      "mobileApps": "Mobile Apps",
+      "performanceOptimization": "Performance Optimization"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Have a project in mind? Let's work together to create something amazing.",
+    "letsConnect": "Let's Connect",
+    "intro": "I'm always interested in hearing about new projects and opportunities. Whether you're a company looking to hire, or you're a fellow developer wanting to collaborate, I'd love to hear from you.",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "send": "Send Message"
+    },
+    "social": {
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "footer": {
+    "copyright": "John Doe. Made with",
+    "coffee": "and lots of coffee ☕",
+    "backToTop": "Back to Top ↑"
+  }
+}

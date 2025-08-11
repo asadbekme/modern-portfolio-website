@@ -1,4 +1,5 @@
 "use client";
+
 import { motion, useScroll, useSpring } from "framer-motion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
