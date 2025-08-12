@@ -7,7 +7,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "name": "John Doe",
+    "name": "Asadbek Rakhimov",
     "profession": "Frontend Developer",
     "description": "Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. Passionate about clean code and innovative solutions.",
     "viewProjects": "View Projects",
@@ -18,17 +18,21 @@
     "description": "Here are some of my recent projects that showcase my skills and passion for web development.",
     "liveDemo": "Live Demo",
     "code": "Code",
-    "ecommerce": {
-      "title": "E-Commerce Platform",
-      "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard."
+    "alifMarketGroup": {
+      "title": "Alif Market Group",
+      "description": "An investment company specialized in building and implementing digital solutions for modern businesses."
     },
     "taskManager": {
       "title": "Task Management App",
-      "description": "A collaborative task management application built with Next.js and Firebase. Real-time updates and team collaboration features."
+      "description": "A modern task management app with Kanban-style drag-and-drop, task views, and admin control."
     },
-    "weatherDashboard": {
-      "title": "Weather Dashboard",
-      "description": "A responsive weather dashboard with location-based forecasts, interactive charts, and beautiful animations."
+    "educationCrm": {
+      "title": "Education CRM System",
+      "description": "A comprehensive CRM system for educational institutions featuring user authentication, role-based access, and a responsive design."
+    },
+    "glassesShop": {
+      "title": "Glasses Shop Website",
+      "description": "A sleek and responsive e-commerce website for a glasses store."
     }
   },
   "skills": {
@@ -43,10 +47,10 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate Frontend Developer with 5+ years of experience creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, beautiful, and intuitive solutions.",
-    "location": "San Francisco, CA",
+    "description": "I'm a passionate Frontend Developer with 2+ years of experience creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+    "location": "Khorezm, Uzbekistan",
     "availability": "Available for freelance work",
-    "education": "Computer Science, Stanford University",
+    "education": "Software Engineering, TUIT university",
     "whatIDo": "What I Do",
     "services": {
       "webDevelopment": "Web Development",
@@ -62,9 +66,13 @@
     "intro": "I'm always interested in hearing about new projects and opportunities. Whether you're a company looking to hire, or you're a fellow developer wanting to collaborate, I'd love to hear from you.",
     "form": {
       "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
       "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
       "email": "Email",
+      "emailPlaceholder": "Enter your email address",
       "subject": "Subject",
+      "subjectPlaceholder": "Enter your project subject",
       "message": "Message",
       "messagePlaceholder": "Tell me about your project...",
       "send": "Send Message"
@@ -76,7 +84,7 @@
     }
   },
   "footer": {
-    "copyright": "John Doe. Made with",
+    "copyright": "Asadbek Rakhimov. Made with",
     "coffee": "and lots of coffee ☕",
     "backToTop": "Back to Top ↑"
   }

@@ -1,25 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const Skills = () => {
+  const t = useTranslations("skills");
+
   const technologies = [
     { name: "React", icon: "⚛️", color: "from-blue-400 to-blue-600" },
     { name: "TypeScript", icon: "📘", color: "from-blue-500 to-blue-700" },
     { name: "Tailwind CSS", icon: "🎨", color: "from-cyan-400 to-cyan-600" },
     { name: "Next.js", icon: "▲", color: "from-gray-700 to-gray-900" },
-    { name: "Node.js", icon: "🟢", color: "from-green-500 to-green-700" },
+    // { name: "Node.js", icon: "🟢", color: "from-green-500 to-green-700" },
     { name: "JavaScript", icon: "💛", color: "from-yellow-400 to-yellow-600" },
-    { name: "Vue.js", icon: "💚", color: "from-green-400 to-green-600" },
-    { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-800" },
-    { name: "PostgreSQL", icon: "🐘", color: "from-blue-600 to-blue-800" },
+    // { name: "Vue.js", icon: "💚", color: "from-green-400 to-green-600" },
+    // { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-800" },
+    // { name: "PostgreSQL", icon: "🐘", color: "from-blue-600 to-blue-800" },
     { name: "Firebase", icon: "🔥", color: "from-orange-400 to-orange-600" },
-    { name: "Docker", icon: "🐳", color: "from-blue-500 to-blue-700" },
-    { name: "AWS", icon: "☁️", color: "from-orange-500 to-orange-700" },
+    // { name: "Docker", icon: "🐳", color: "from-blue-500 to-blue-700" },
+    // { name: "AWS", icon: "☁️", color: "from-orange-500 to-orange-700" },
     { name: "Git", icon: "📝", color: "from-red-500 to-red-700" },
     { name: "Figma", icon: "🎨", color: "from-purple-500 to-purple-700" },
     { name: "Vercel", icon: "▲", color: "from-gray-800 to-black" },
-    { name: "Supabase", icon: "⚡", color: "from-green-500 to-green-700" },
+    // { name: "Supabase", icon: "⚡", color: "from-green-500 to-green-700" },
+  ];
+
+  const stats = [
+    { number: "2+", label: t("stats.experience") },
+    { number: "20+", label: t("stats.projects") },
+    { number: "15+", label: t("stats.technologies") },
+    { number: "100%", label: t("stats.satisfaction") },
   ];
 
   // Duplicate the array to create seamless infinite scroll
@@ -40,12 +50,11 @@ const Skills = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Technologies & Tools
+              {t("title")}
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            I work with modern technologies to build scalable and efficient web
-            applications.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -130,23 +139,18 @@ const Skills = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
         >
-          {[
-            { number: "5+", label: "Years Experience" },
-            { number: "50+", label: "Projects Completed" },
-            { number: "20+", label: "Technologies" },
-            { number: "100%", label: "Client Satisfaction" },
-          ].map((stat, index) => (
+          {stats.map((stat) => (
             <motion.div
               key={stat.label}
               whileHover={{ scale: 1.05 }}
               className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl"
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
+              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
                 {stat.number}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 font-medium">
                 {stat.label}
-              </div>
+              </p>
             </motion.div>
           ))}
         </motion.div>

@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
-import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   description:
     "Passionate Frontend Developer creating beautiful, responsive, and user-friendly web experiences with modern technologies.",
   keywords:
-    "frontend developer, web developer, react, next.js, typescript, javascript",
+    "frontend developer, web developer, react, next.js, typescript, javascript, tailwind css, portfolio, asadbek rakhimov",
   authors: [{ name: "Asadbek Rakhimov" }],
   creator: "Asadbek Rakhimov",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://johndoe.dev",
+    images: ["/opengraph.png"],
     title: "Asadbek Rakhimov - Frontend Developer",
     description:
       "Passionate Frontend Developer creating beautiful, responsive, and user-friendly web experiences.",

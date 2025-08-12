@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const t = useTranslations("hero");
+
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -35,7 +38,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                John Doe
+                {t("name")}
               </span>
             </motion.h1>
 
@@ -45,7 +48,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Frontend Developer
+              {t("profession")}
             </motion.h2>
 
             <motion.p
@@ -54,9 +57,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Crafting beautiful, responsive, and user-friendly web experiences
-              with modern technologies. Passionate about clean code and
-              innovative solutions.
+              {t("description")}
             </motion.p>
 
             <motion.div
@@ -69,7 +70,7 @@ const Hero = () => {
                 onClick={scrollToProjects}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                View Projects
+                {t("viewProjects")}
               </Button>
 
               <Button
@@ -77,7 +78,7 @@ const Hero = () => {
                 variant="outline"
                 className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 bg-transparent"
               >
-                Contact Me
+                {t("contactMe")}
               </Button>
             </motion.div>
           </motion.div>

@@ -6,6 +6,7 @@ import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +63,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
           >
-            John Doe
+            asadbekjs
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -107,11 +108,11 @@ const Header = () => {
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                      className={`w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-3 ${
-                        locale === lang.code
-                          ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                          : ""
-                      }`}
+                      className={cn(
+                        "w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-3",
+                        locale === lang.code &&
+                          "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
+                      )}
                     >
                       <span>{lang.flag}</span>
                       <span className="text-sm">{lang.name}</span>

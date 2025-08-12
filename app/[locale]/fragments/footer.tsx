@@ -1,24 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, MessageCircle, Heart } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("footer");
+
   const socialLinks = [
     {
       name: "GitHub",
       icon: <Github size={20} />,
-      href: "https://github.com/johndoe",
+      href: "https://github.com/asadbekme",
     },
     {
       name: "LinkedIn",
       icon: <Linkedin size={20} />,
-      href: "https://linkedin.com/in/johndoe",
+      href: "https://linkedin.com/in/asadbek-rakhimov",
     },
     {
-      name: "Twitter",
-      icon: <Twitter size={20} />,
-      href: "https://twitter.com/johndoe",
+      name: "Telegram",
+      icon: <MessageCircle size={20} />,
+      href: "https://t.me/asadbekjs",
     },
   ];
 
@@ -58,14 +61,16 @@ const Footer = () => {
             className="text-center text-gray-400"
           >
             <p className="flex items-center justify-center space-x-2">
-              <span>© {new Date().getFullYear()} John Doe. Made with</span>
+              <span>
+                © {new Date().getFullYear()} {t("copyright")}
+              </span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
               >
                 <Heart size={16} className="text-red-500 fill-current" />
               </motion.div>
-              <span>and lots of coffee ☕</span>
+              <span>{t("coffee")}</span>
             </p>
           </motion.div>
 
@@ -76,7 +81,7 @@ const Footer = () => {
             whileTap={{ scale: 0.9 }}
             className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
           >
-            Back to Top ↑
+            {t("backToTop")}
           </motion.button>
         </div>
       </div>

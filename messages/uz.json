@@ -7,9 +7,9 @@
     "contact": "Aloqa"
   },
   "hero": {
-    "name": "Jon Dou",
+    "name": "Asadbek Raximov",
     "profession": "Frontend Dasturchi",
-    "description": "Zamonaviy texnologiyalar yordamida chiroyli, moslashuvchan va foydalanuvchilarga qulay veb-tajribalarni yarataman. Toza kod va innovatsion yechimlarni sevaman.",
+    "description": "Zamonaviy texnologiyalar yordamida chiroyli, moslashuvchan va foydalanuvchilarga qulay veb-tajribalarni yarataman. Toza kod va innovatsion yechimlarga ishtiyoqmandman.",
     "viewProjects": "Loyihalarni ko'rish",
     "contactMe": "Men bilan bog'lanish"
   },
@@ -18,17 +18,21 @@
     "description": "Mening ko'nikmalarim va veb-dasturlashga bo'lgan muhabbatimni ko'rsatadigan so'nggi loyihalarimdan ba'zilari.",
     "liveDemo": "Jonli demo",
     "code": "Kod",
-    "ecommerce": {
-      "title": "E-Commerce platformasi",
-      "description": "React, Node.js va MongoDB bilan to'liq elektron tijorat yechimi. Foydalanuvchi autentifikatsiyasi, to'lov jarayoni va admin paneli mavjud."
+    "alifMarketGroup": {
+      "title": "Alif Market Group",
+      "description": "Zamonaviy bizneslar uchun raqamli yechimlarni yaratish va amalga oshirishga ixtisoslashgan investitsiya kompaniyasi."
     },
     "taskManager": {
       "title": "Vazifalarni boshqarish ilovasi",
-      "description": "Next.js va Firebase bilan yaratilgan hamkorlikdagi vazifalarni boshqarish ilovasi. Real vaqtda yangilanishlar va jamoa hamkorligi imkoniyatlari."
+      "description": "Aynan Kanban uslubidagi tortish va tashlash, vazifa ko'rinishlari va admin nazorati bilan zamonaviy vazifalarni boshqarish ilovasi."
     },
-    "weatherDashboard": {
-      "title": "Ob-havo paneli",
-      "description": "Joylashuvga asoslangan prognozlar, interaktiv diagrammalar va chiroyli animatsiyalar bilan moslashuvchan ob-havo paneli."
+    "educationCrm": {
+      "title": "Ta'lim CRM tizimi",
+      "description": "Foydalanuvchi autentifikatsiyasi, rolga asoslangan kirish va moslashuvchan dizayn bilan ta'minlangan ta'lim muassasalari uchun keng qamrovli CRM tizimi."
+    },
+    "glassesShop": {
+      "title": "Ko'zoynak do'koni veb-sayti",
+      "description": "Zamonaviy elektron kommeritsiya uchun elegant va moslashuvchan veb-sayt."
     }
   },
   "skills": {
@@ -43,16 +47,16 @@
   },
   "about": {
     "title": "Men haqimda",
-    "description": "Men 5+ yillik tajribaga ega bo'lgan, chiroyli, funktsional va foydalanuvchilarga yo'naltirilgan raqamli tajribalarni yaratishda ishtiyoqli Frontend dasturchiman. Murakkab muammolarni oddiy, chiroyli va intuitiv yechimlarga aylantirishni yaxshi ko'raman.",
-    "location": "San-Fransisko, Kaliforniya",
+    "description": "Men 2+ yillik tajribaga ega bo'lgan, chiroyli, funktsional va foydalanuvchilarga yo'naltirilgan raqamli tajribalarni yaratishda ishtiyoqli Frontend dasturchiman. Murakkab muammolarni oddiy, chiroyli va intuitiv yechimlarga aylantirishni yaxshi ko'raman.",
+    "location": "Xorazm, O'zbekiston",
     "availability": "Frilanser ish uchun mavjud",
-    "education": "Kompyuter fanlari, Stenford universiteti",
+    "education": "Dasturiy muhandislik, TATU universiteti",
     "whatIDo": "Men nima qilaman",
     "services": {
       "webDevelopment": "Veb dasturlash",
       "uiuxDesign": "UI/UX dizayn",
       "mobileApps": "Mobil ilovalar",
-      "performanceOptimization": "Ishlash optimallashtirish"
+      "performanceOptimization": "Ishlashini optimallashtirish"
     }
   },
   "contact": {
@@ -62,9 +66,13 @@
     "intro": "Men har doim yangi loyihalar va imkoniyatlar haqida eshitishdan manfaatdorman. Siz ishga olmoqchi bo'lgan kompaniya yoki hamkorlik qilmoqchi bo'lgan dasturchi bo'lishingizdan qat'i nazar, sizdan eshitishni xohlayman.",
     "form": {
       "firstName": "Ism",
+      "firstNamePlaceholder": "Ismingizni kiriting",
       "lastName": "Familiya",
+      "lastNamePlaceholder": "Familiyangizni kiriting",
       "email": "Elektron pochta",
+      "emailPlaceholder": "Elektron pochta manzilingizni kiriting",
       "subject": "Mavzu",
+      "subjectPlaceholder": "Loyiha mavzusini kiriting",
       "message": "Xabar",
       "messagePlaceholder": "Loyihangiz haqida gapirib bering...",
       "send": "Xabar yuborish"
@@ -76,7 +84,7 @@
     }
   },
   "footer": {
-    "copyright": "Jon Dou. Quyidagilar bilan yaratilgan",
+    "copyright": "Asadbek Raximov. Quyidagilar bilan yaratilgan",
     "coffee": "va ko'p qahva ☕",
     "backToTop": "Yuqoriga ↑"
   }

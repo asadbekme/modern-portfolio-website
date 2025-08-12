@@ -3,39 +3,69 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
+  const t = useTranslations("projects");
+
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description:
-        "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      image: "/placeholder.svg?height=300&width=400",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: t("alifMarketGroup.title"),
+      description: t("alifMarketGroup.description"),
+      image: "/projects/project1.png",
+      tech: [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "TypeScript",
+        "Tanstack Query",
+        "Headless UI",
+      ],
+      liveUrl: "https://aetestdomain.com",
+      githubUrl: "https://github.com/asadbekme",
     },
     {
       id: 2,
-      title: "Task Management App",
-      description:
-        "A collaborative task management application built with Next.js and Firebase. Real-time updates and team collaboration features.",
-      image: "/placeholder.svg?height=300&width=400",
-      tech: ["Next.js", "Firebase", "Tailwind CSS", "TypeScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: t("taskManager.title"),
+      description: t("taskManager.description"),
+      image: "/projects/project2.webp",
+      tech: [
+        "Next.js",
+        "Shadcn UI",
+        "Tailwind CSS",
+        "TypeScript",
+        "jsonstorage.net",
+        "Tanstack Query",
+      ],
+      liveUrl: "https://task-management-app-by-asadbekjs.vercel.app",
+      githubUrl: "https://github.com/asadbekme/task-management-app",
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description:
-        "A responsive weather dashboard with location-based forecasts, interactive charts, and beautiful animations.",
-      image: "/placeholder.svg?height=300&width=400",
-      tech: ["React", "Chart.js", "OpenWeather API", "CSS3"],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: t("educationCrm.title"),
+      description: t("educationCrm.description"),
+      image: "/projects/project3.jpg",
+      tech: [
+        "React",
+        "Next.js",
+        "Shadcn UI",
+        "Tailwind CSS",
+        "TypeScript",
+        "Recharts",
+      ],
+      liveUrl: "https://education-crm-flame.vercel.app",
+      githubUrl: "https://github.com/asadbekme/education-crm",
+    },
+    {
+      id: 4,
+      title: t("glassesShop.title"),
+      description: t("glassesShop.description"),
+      image: "/projects/project4.png",
+      tech: ["HTML", "SCSS", "JavaScript"],
+      liveUrl: "https://glasses-website-design.netlify.app",
+      githubUrl: "https://github.com/asadbekme/glasses-website-design",
     },
   ];
 
@@ -72,12 +102,11 @@ const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Featured Projects
+              {t("title")}
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and
-            passion for web development.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -126,10 +155,10 @@ const Projects = () => {
                 <div className="flex gap-3">
                   <Button
                     size="sm"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                   >
                     <ExternalLink size={16} className="mr-2" />
-                    Live Demo
+                    {t("liveDemo")}
                   </Button>
                   <Button
                     size="sm"
@@ -137,7 +166,7 @@ const Projects = () => {
                     className="flex-1 bg-transparent"
                   >
                     <Github size={16} className="mr-2" />
-                    Code
+                    {t("code")}
                   </Button>
                 </div>
               </div>

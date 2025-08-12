@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const About = () => {
   const [displayText, setDisplayText] = useState("");
-  const fullText =
-    "I'm a passionate Frontend Developer with 5+ years of experience creating beautiful, functional, and user-centered digital experiences. I love turning complex problems into simple, beautiful, and intuitive solutions.";
+  const t = useTranslations("about");
+  const fullText = t("description");
 
   useEffect(() => {
     let index = 0;
@@ -23,6 +24,19 @@ const About = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const data = [
+    { icon: "📍", text: t("location") },
+    { icon: "💼", text: t("availability") },
+    { icon: "🎓", text: t("education") },
+  ];
+
+  const services = [
+    t("services.webDevelopment"),
+    t("services.uiuxDesign"),
+    t("services.mobileApps"),
+    t("services.performanceOptimization"),
+  ];
+
   return (
     <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800/50">
       <div className="container mx-auto px-4">
@@ -35,7 +49,7 @@ const About = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              About Me
+              {t("title")}
             </span>
           </h2>
         </motion.div>
@@ -51,11 +65,11 @@ const About = () => {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                className="relative w-80 h-80 mx-auto lg:mx-0"
+                className="relative size-80 mx-auto"
               >
                 <Image
-                  src="/placeholder.svg?height=320&width=320"
-                  alt="John Doe"
+                  src="/my-photo.png"
+                  alt="Asadbek Rakhimov"
                   fill
                   className="rounded-full object-cover shadow-2xl"
                 />
@@ -81,39 +95,29 @@ const About = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center">
-                <span className="text-blue-500 font-semibold mr-2">📍</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  San Francisco, CA
-                </span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-blue-500 font-semibold mr-2">💼</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  Available for freelance work
-                </span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-blue-500 font-semibold mr-2">🎓</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  Computer Science, Stanford University
-                </span>
-              </div>
+              {data.map((item, index) => (
+                <div
+                  key={`aboutData-${index}`}
+                  className="flex items-center space-x-3"
+                >
+                  <span className="text-blue-500 font-semibold">
+                    {item.icon}
+                  </span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
             </div>
 
             <div className="pt-6">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                What I Do
+                {t("whatIDo")}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "Web Development",
-                  "UI/UX Design",
-                  "Mobile Apps",
-                  "Performance Optimization",
-                ].map((item) => (
+                {services.map((item, index) => (
                   <motion.div
-                    key={item}
+                    key={`service-${index}`}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg shadow-sm"
                   >
