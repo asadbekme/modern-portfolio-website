@@ -58,18 +58,19 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-center text-gray-400"
+            className="text-center"
           >
-            <p className="flex items-center justify-center space-x-2">
+            <p className="md:flex md:items-center space-x-2 text-gray-400">
               <span>
                 © {new Date().getFullYear()} {t("copyright")}
               </span>
-              <motion.div
+              <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
+                className="inline-flex items-center space-x-1"
               >
                 <Heart size={16} className="text-red-500 fill-current" />
-              </motion.div>
+              </motion.span>
               <span>{t("coffee")}</span>
             </p>
           </motion.div>

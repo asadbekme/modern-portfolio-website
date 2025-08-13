@@ -7,6 +7,7 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -61,8 +62,12 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={poppins.className}>
+    <html
+      lang={locale}
+      className="scroll-smooth overflow-x-hidden"
+      suppressHydrationWarning
+    >
+      <body className={cn(poppins.className, "overflow-x-hidden")}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
