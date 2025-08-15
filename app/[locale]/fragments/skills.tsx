@@ -2,27 +2,77 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import {
+  SiJavascript,
+  SiTailwindcss,
+  SiReact,
+  SiTypescript,
+  SiFirebase,
+  SiNextdotjs,
+  SiGit,
+  SiReacthookform,
+  SiRedux,
+  SiReactquery,
+  SiFigma,
+  SiAntdesign,
+  SiShadcnui,
+  SiVercel,
+} from "react-icons/si";
 
 const Skills = () => {
   const t = useTranslations("skills");
 
   const technologies = [
-    { name: "React", icon: "⚛️", color: "from-blue-400 to-blue-600" },
-    { name: "TypeScript", icon: "📘", color: "from-blue-500 to-blue-700" },
-    { name: "Tailwind CSS", icon: "🎨", color: "from-cyan-400 to-cyan-600" },
-    { name: "Next.js", icon: "▲", color: "from-gray-700 to-gray-900" },
-    // { name: "Node.js", icon: "🟢", color: "from-green-500 to-green-700" },
-    { name: "JavaScript", icon: "💛", color: "from-yellow-400 to-yellow-600" },
-    // { name: "Vue.js", icon: "💚", color: "from-green-400 to-green-600" },
-    // { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-800" },
-    // { name: "PostgreSQL", icon: "🐘", color: "from-blue-600 to-blue-800" },
-    { name: "Firebase", icon: "🔥", color: "from-orange-400 to-orange-600" },
-    // { name: "Docker", icon: "🐳", color: "from-blue-500 to-blue-700" },
-    // { name: "AWS", icon: "☁️", color: "from-orange-500 to-orange-700" },
-    { name: "Git", icon: "📝", color: "from-red-500 to-red-700" },
-    { name: "Figma", icon: "🎨", color: "from-purple-500 to-purple-700" },
-    { name: "Vercel", icon: "▲", color: "from-gray-800 to-black" },
-    // { name: "Supabase", icon: "⚡", color: "from-green-500 to-green-700" },
+    {
+      name: "JavaScript",
+      icon: <SiJavascript />,
+      color: "from-[#F7DF1E] to-[#FFD600]",
+    }, // JS Yellow
+    {
+      name: "Tailwind CSS",
+      icon: <SiTailwindcss />,
+      color: "from-[#06B6D4] to-[#0E7490]",
+    }, // Tailwind Cyan
+    { name: "React", icon: <SiReact />, color: "from-[#61DAFB] to-[#1E90FF]" }, // React Blue
+    {
+      name: "TypeScript",
+      icon: <SiTypescript />,
+      color: "from-[#3178C6] to-[#1E40AF]",
+    }, // TS Blue
+    {
+      name: "Firebase",
+      icon: <SiFirebase />,
+      color: "from-[#FFCA28] to-[#F57C00]",
+    }, // Firebase Orange
+    { name: "Next.js", icon: <SiNextdotjs />, color: "from-gray-800 to-black" }, // Next Black
+    { name: "Git", icon: <SiGit />, color: "from-[#F05033] to-[#B91C1C]" }, // Git Orange-Red
+    {
+      name: "React Hook Form",
+      icon: <SiReacthookform />,
+      color: "from-[#EC5990] to-[#BE185D]",
+    }, // RHF Pink
+    {
+      name: "Redux Toolkit",
+      icon: <SiRedux />,
+      color: "from-[#764ABC] to-[#4B0082]",
+    }, // Redux Purple
+    {
+      name: "React Query",
+      icon: <SiReactquery />,
+      color: "from-[#FF4154] to-[#C81E1E]",
+    }, // React Query Red
+    { name: "Figma", icon: <SiFigma />, color: "from-[#F24E1E] to-[#A259FF]" }, // Figma Gradient
+    {
+      name: "Ant Design",
+      icon: <SiAntdesign />,
+      color: "from-[#1890FF] to-[#0050B3]",
+    }, // Ant Blue
+    {
+      name: "Shadcn UI",
+      icon: <SiShadcnui />,
+      color: "from-[#8B5CF6] to-[#6D28D9]",
+    }, // Shadcn Purple
+    { name: "Vercel", icon: <SiVercel />, color: "from-gray-700 to-black" }, // Vercel Black
   ];
 
   const stats = [
@@ -40,7 +90,7 @@ const Skills = () => {
       id="skills"
       className="py-20 bg-white dark:bg-gray-900 overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      <div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +136,7 @@ const Skills = () => {
                 className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-r ${tech.color} flex items-center justify-center text-white text-lg font-bold`}
+                  className={`size-10 rounded-full bg-gradient-to-r ${tech.color} flex items-center justify-center text-white text-lg font-bold`}
                 >
                   {tech.icon}
                 </div>
@@ -132,28 +182,30 @@ const Skills = () => {
         </div>
 
         {/* Stats section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
-        >
-          {stats.map((stat) => (
-            <motion.div
-              key={stat.label}
-              whileHover={{ scale: 1.05 }}
-              className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl"
-            >
-              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
-                {stat.number}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 font-medium">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 lg:gap-8 mt-16"
+          >
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                whileHover={{ scale: 1.05 }}
+                className="text-center p-3 md:p-4 lg:p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl"
+              >
+                <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                  {stat.number}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 font-medium line-clamp-2">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
