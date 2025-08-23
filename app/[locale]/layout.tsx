@@ -16,32 +16,37 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Asadbek Rakhimov - Frontend Developer",
+  title: "Asadbek Rakhimov - Frontend Developer & UI/UX Enthusiast",
   description:
-    "Passionate Frontend Developer creating beautiful, responsive, and user-friendly web experiences with modern technologies.",
+    "Creative Frontend Developer crafting user-friendly, responsive, and visually engaging web experiences. Explore portfolio, projects, and achievements.",
   keywords:
-    "frontend developer, web developer, react, next.js, typescript, javascript, tailwind css, portfolio, asadbek rakhimov",
+    "frontend developer, web developer, react, next.js, typescript, javascript, tailwind css, redux toolkit, portfolio, asadbek rakhimov, asadbek rakhimov's portfolio, Uzbekistan developer, asadbek rakhimov, Web Developer Portfolio, UI/UX, JavaScript Engineer, Frontend Engineer, React Developer, Next.js Specialist, TypeScript Expert, Tailwind CSS Designer, Responsive Web Design, Modern Web Applications, Creative Web Solutions",
   authors: [{ name: "Asadbek Rakhimov" }],
   creator: "Asadbek Rakhimov",
   openGraph: {
     type: "website",
     locale: "en_US",
     images: ["/opengraph.png"],
-    title: "Asadbek Rakhimov - Frontend Developer",
+    title: "Asadbek Rakhimov - Frontend Developer & UI/UX Enthusiast",
     description:
-      "Passionate Frontend Developer creating beautiful, responsive, and user-friendly web experiences.",
-    siteName: "Asadbek Rakhimov Portfolio",
+      "Passionate Frontend Developer building modern, responsive, and user-centered web applications. Explore my portfolio, projects, and skills.",
+    siteName: "Asadbek Rakhimov's Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Asadbek Rakhimov - Frontend Developer",
+    title: "Asadbek Rakhimov - Frontend Developer & UI/UX Enthusiast",
     description:
-      "Passionate Frontend Developer creating beautiful, responsive, and user-friendly web experiences.",
+      "Passionate Frontend Developer building modern, responsive, and user-centered webgit applications. Explore my portfolio, projects, and skills.",
     creator: "@asadbekrakhimov",
   },
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
   },
 };
 
