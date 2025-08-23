@@ -8,10 +8,11 @@
   },
   "hero": {
     "name": "Asadbek Rakhimov",
-    "profession": "Frontend Developer",
+    "profession": "Frontend Developer & UI/UX Enthusiast",
     "description": "Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. Passionate about clean code and innovative solutions.",
     "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "contactMe": "Contact Me",
+    "resume": "Resume"
   },
   "projects": {
     "title": "Featured Projects",

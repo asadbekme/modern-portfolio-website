@@ -1,28 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import useTypingText from "@/hooks/use-typing-text";
 
 const About = () => {
-  const [displayText, setDisplayText] = useState("");
   const t = useTranslations("about");
   const fullText = t("description");
-
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setDisplayText(fullText.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 50);
-
-    return () => clearInterval(timer);
-  }, []);
+  const typingText = useTypingText(fullText);
 
   const data = [
     { icon: "📍", text: t("location") },
@@ -86,7 +72,7 @@ const About = () => {
             className="space-y-6"
           >
             <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed min-h-[120px]">
-              {displayText}
+              {typingText}
               <motion.span
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}

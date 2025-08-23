@@ -8,10 +8,11 @@
   },
   "hero": {
     "name": "Asadbek Raximov",
-    "profession": "Frontend Dasturchi",
+    "profession": "Frontend Dasturchi va UI/UX Ishqibozi",
     "description": "Zamonaviy texnologiyalar yordamida chiroyli, moslashuvchan va foydalanuvchilarga qulay veb-tajribalarni yarataman. Toza kod va innovatsion yechimlarga ishtiyoqmandman.",
     "viewProjects": "Loyihalarni ko'rish",
-    "contactMe": "Men bilan bog'lanish"
+    "contactMe": "Men bilan bog'lanish",
+    "resume": "Rezyume"
   },
   "projects": {
     "title": "Tanlangan loyihalar",

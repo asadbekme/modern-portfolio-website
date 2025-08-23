@@ -1,19 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import useTypingText from "@/hooks/use-typing-text";
 
 const Hero = () => {
   const t = useTranslations("hero");
+  const fullText = t("profession");
+  const typingText = useTypingText(fullText);
 
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -48,7 +48,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {t("profession")}
+              {typingText}
+              <span className="animate-pulse ml-1 text-blue-500">|</span>
             </motion.h2>
 
             <motion.p
@@ -74,11 +75,13 @@ const Hero = () => {
               </Button>
 
               <Button
-                onClick={scrollToContact}
+                asChild
                 variant="outline"
                 className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 bg-transparent"
               >
-                {t("contactMe")}
+                <Link href="/resume.pdf" download={true} target="_blank">
+                  {t("resume")}
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
