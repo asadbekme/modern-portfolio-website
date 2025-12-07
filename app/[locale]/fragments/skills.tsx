@@ -86,17 +86,14 @@ const Skills = () => {
   const duplicatedTechnologies = [...technologies, ...technologies];
 
   return (
-    <section
-      id="skills"
-      className="py-20 bg-white dark:bg-gray-900 overflow-hidden"
-    >
+    <section id="skills" className="py-20 overflow-hidden">
       <div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="container mx-auto px-4 text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">

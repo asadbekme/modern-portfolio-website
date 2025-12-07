@@ -7,7 +7,6 @@ import {
   Footer,
   Header,
   Hero,
-  ParticleBackground,
   Projects,
   Skills,
 } from "./fragments";
@@ -22,7 +21,33 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <ParticleBackground />
+      {/* Light Mode - White Sphere Grid Background */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none opacity-100 dark:opacity-0 transition-opacity duration-300"
+        style={{
+          background: "white",
+          backgroundImage: `
+            linear-gradient(to right, rgba(71,85,105,0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(71,85,105,0.3) 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, rgba(139,92,246,0.25) 0%, rgba(139,92,246,0.1) 40%, transparent 80%)
+          `,
+          backgroundSize: "32px 32px, 32px 32px, 100% 100%",
+        }}
+      />
+
+      {/* Dark Mode - Sphere Grid Background */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-300"
+        style={{
+          background: "#111827",
+          backgroundImage: `
+            linear-gradient(to right, rgba(75,85,99,0.4) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(75,85,99,0.4) 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, rgba(139,92,246,0.3) 0%, rgba(139,92,246,0.15) 40%, transparent 80%)
+          `,
+          backgroundSize: "32px 32px, 32px 32px, 100% 100%",
+        }}
+      />
 
       {/* Progress bar */}
       <motion.div
@@ -30,17 +55,20 @@ export default function Home() {
         style={{ scaleX }}
       />
 
-      <Header />
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
 
-      <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        <About />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <Projects />
+          <Skills />
+          <About />
+          <Contact />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
