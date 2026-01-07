@@ -9,7 +9,7 @@ import {
   Hero,
   Projects,
   Skills,
-} from "./fragments";
+} from "./_components";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();

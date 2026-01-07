@@ -17,6 +17,7 @@ import {
   SiAntdesign,
   SiShadcnui,
   SiVercel,
+  SiSupabase,
 } from "react-icons/si";
 
 const Skills = () => {
@@ -40,10 +41,10 @@ const Skills = () => {
       color: "from-[#3178C6] to-[#1E40AF]",
     }, // TS Blue
     {
-      name: "Firebase",
-      icon: <SiFirebase />,
-      color: "from-[#FFCA28] to-[#F57C00]",
-    }, // Firebase Orange
+      name: "Supabase",
+      icon: <SiSupabase />,
+      color: "from-[#2D6A4F] to-[#95D5B2]",
+    }, // Supabase green
     { name: "Next.js", icon: <SiNextdotjs />, color: "from-gray-800 to-black" }, // Next Black
     { name: "Git", icon: <SiGit />, color: "from-[#F05033] to-[#B91C1C]" }, // Git Orange-Red
     {

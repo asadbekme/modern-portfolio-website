@@ -5,6 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Projects = () => {
   const t = useTranslations("projects");
@@ -154,19 +155,34 @@ const Projects = () => {
 
                 <div className="flex gap-3">
                   <Button
+                    variant="link"
                     size="sm"
                     className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                   >
-                    <ExternalLink size={16} className="mr-2" />
-                    {t("liveDemo")}
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
+                      <ExternalLink size={16} className="mr-2" />
+                      {t("liveDemo")}
+                    </Link>
                   </Button>
                   <Button
                     size="sm"
-                    variant="outline"
-                    className="flex-1 bg-transparent"
+                    variant="link"
+                    className="flex-1 bg-transparent border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
-                    <Github size={16} className="mr-2" />
-                    {t("code")}
+                    <Link
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
+                      <Github size={16} className="mr-2" />
+                      {t("code")}
+                    </Link>
                   </Button>
                 </div>
               </div>

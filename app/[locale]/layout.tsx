@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     "Creative Frontend Developer crafting user-friendly, responsive, and visually engaging web experiences. Explore portfolio, projects, and achievements.",
   keywords:
-    "frontend developer, web developer, react, next.js, typescript, javascript, tailwind css, redux toolkit, portfolio, asadbek rakhimov, asadbek rakhimov's portfolio, Uzbekistan developer, asadbek rakhimov, Web Developer Portfolio, UI/UX, JavaScript Engineer, Frontend Engineer, React Developer, Next.js Specialist, TypeScript Expert, Tailwind CSS Designer, Responsive Web Design, Modern Web Applications, Creative Web Solutions",
+    "asadbek rakhimov, asadbekjs, asadbekme, asadbek js, asadbek rakhimov's portfolio, js, developer, frontend developer, web developer, react, next.js, typescript, javascript, tailwind css, redux toolkit, portfolio, asadbek rakhimov, asadbek rakhimov's portfolio, Uzbekistan developer, asadbek rakhimov, Web Developer Portfolio, UI/UX, JavaScript Engineer, Frontend Engineer, React Developer, Next.js Specialist, TypeScript Expert, Tailwind CSS Designer, Responsive Web Design, Modern Web Applications, Creative Web Solutions",
   authors: [{ name: "Asadbek Rakhimov" }],
   creator: "Asadbek Rakhimov",
   openGraph: {
