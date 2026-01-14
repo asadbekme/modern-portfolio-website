@@ -7,7 +7,6 @@ import {
   SiTailwindcss,
   SiReact,
   SiTypescript,
-  SiFirebase,
   SiNextdotjs,
   SiGit,
   SiReacthookform,

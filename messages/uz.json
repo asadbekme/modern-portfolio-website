@@ -88,5 +88,10 @@
     "copyright": "Asadbek Raximov. Quyidagilar bilan yaratilgan",
     "coffee": "va ko'p qahva ☕",
     "backToTop": "Yuqoriga ↑"
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Sahifa topilmadi",
+    "homeButton": "Bosh sahifaga qaytish"
   }
 }

@@ -88,5 +88,10 @@
     "copyright": "Asadbek Rakhimov. Made with",
     "coffee": "and lots of coffee ☕",
     "backToTop": "Back to Top ↑"
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Page Not Found",
+    "homeButton": "Go Home"
   }
 }

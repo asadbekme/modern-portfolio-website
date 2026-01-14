@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Asadbek Rakhimov - Frontend Developer & UI/UX Enthusiast",
     description:
-      "Passionate Frontend Developer building modern, responsive, and user-centered webgit applications. Explore my portfolio, projects, and skills.",
+      "Passionate Frontend Developer building modern, responsive, and user-centered web applications. Explore my portfolio, projects, and skills.",
     creator: "@asadbekrakhimov",
   },
   robots: {
