@@ -6,6 +6,7 @@ import About from "./about";
 import Contact from "./contact";
 import Footer from "./footer";
 import ParticleBackground from "./particle-background";
+import BackgroundPattern from "./background-pattern";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   Contact,
   Footer,
   ParticleBackground,
+  BackgroundPattern,
 };

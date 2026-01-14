@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { cn } from "@/lib/utils";
+import { BackgroundPattern } from "./_components";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -80,7 +81,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <BackgroundPattern>{children}</BackgroundPattern>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
