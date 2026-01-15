@@ -11,7 +11,7 @@ import {
 const Home = () => {
   return (
     <div className="relative z-10">
-      <Header />
+      <Header isHome={true} />
 
       <main>
         <Hero />

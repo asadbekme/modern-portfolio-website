@@ -10,7 +10,7 @@ const NotFound = () => {
 
   return (
     <div className="relative z-10 flex flex-col min-h-screen">
-      <Header />
+      <Header isHome={false} />
 
       <main className="flex-grow flex items-center justify-center p-4">
         <div className="text-center">
