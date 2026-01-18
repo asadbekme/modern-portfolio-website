@@ -7,7 +7,10 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { QueryProvider } from "@/providers/query-provider";
+import { AuthProvider } from "@/contexts/auth-context";
 import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
 import { BackgroundPattern } from "./_components";
 import "./globals.css";
 
@@ -74,16 +77,23 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={cn(poppins.className, "overflow-x-hidden")}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <BackgroundPattern>{children}</BackgroundPattern>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <QueryProvider>
+          <AuthProvider>
+            <NextIntlClientProvider messages={messages}>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <BackgroundPattern>
+                  {children}
+                  <Toaster position="top-right" richColors />
+                </BackgroundPattern>
+              </ThemeProvider>
+            </NextIntlClientProvider>
+          </AuthProvider>
+        </QueryProvider>
       </body>
     </html>
   );
