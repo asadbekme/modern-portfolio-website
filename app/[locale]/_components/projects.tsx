@@ -3,72 +3,43 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import axios from "axios";
 
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  liveUrl: string | null;
+  githubUrl: string | null;
+};
+
+/**
+ * Projects Component - Now fetches data dynamically from Supabase
+ * 
+ * WHY: Uses TanStack Query for efficient data fetching and caching.
+ * Fetches projects based on current locale for proper i18n support.
+ */
 const Projects = () => {
   const t = useTranslations("projects");
+  const locale = useLocale();
 
-  const projects = [
-    {
-      id: 1,
-      title: t("alifMarketGroup.title"),
-      description: t("alifMarketGroup.description"),
-      image: "/projects/project1.png",
-      tech: [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "TypeScript",
-        "Tanstack Query",
-        "Headless UI",
-      ],
-      liveUrl: "https://aetestdomain.com",
-      githubUrl: "https://github.com/asadbekme",
+  // Fetch projects from API based on current locale
+  const { data, isLoading, error } = useQuery<{ projects: Project[] }>({
+    queryKey: ["projects", locale],
+    queryFn: async () => {
+      const response = await axios.get(`/api/projects?locale=${locale}`);
+      return response.data;
     },
-    {
-      id: 2,
-      title: t("taskManager.title"),
-      description: t("taskManager.description"),
-      image: "/projects/project2.webp",
-      tech: [
-        "Next.js",
-        "Shadcn UI",
-        "Tailwind CSS",
-        "TypeScript",
-        "jsonstorage.net",
-        "Tanstack Query",
-      ],
-      liveUrl: "https://task-management-app-by-asadbekjs.vercel.app",
-      githubUrl: "https://github.com/asadbekme/task-management-app",
-    },
-    {
-      id: 3,
-      title: t("educationCrm.title"),
-      description: t("educationCrm.description"),
-      image: "/projects/project3.jpg",
-      tech: [
-        "React",
-        "Next.js",
-        "Shadcn UI",
-        "Tailwind CSS",
-        "TypeScript",
-        "Recharts",
-      ],
-      liveUrl: "https://education-crm-flame.vercel.app",
-      githubUrl: "https://github.com/asadbekme/education-crm",
-    },
-    {
-      id: 4,
-      title: t("glassesShop.title"),
-      description: t("glassesShop.description"),
-      image: "/projects/project4.png",
-      tech: ["HTML", "SCSS", "JavaScript"],
-      liveUrl: "https://glasses-website-design.netlify.app",
-      githubUrl: "https://github.com/asadbekme/glasses-website-design",
-    },
-  ];
+    staleTime: 5 * 60 * 1000, // Cache for 5 minutes
+  });
+
+  const projects = data?.projects || [];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,14 +82,29 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {projects.map((project) => (
+        {isLoading ? (
+          <div className="text-center py-12">
+            <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center py-12">
+            <p className="text-red-600 dark:text-red-400">
+              Failed to load projects. Please try again later.
+            </p>
+          </div>
+        ) : projects.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-600 dark:text-gray-400">No projects available.</p>
+          </div>
+        ) : (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -154,41 +140,46 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Button
-                    variant="link"
-                    size="sm"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
-                  >
-                    <Link
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center"
+                  {project.liveUrl && (
+                    <Button
+                      variant="link"
+                      size="sm"
+                      className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
                     >
-                      <ExternalLink size={16} className="mr-2" />
-                      {t("liveDemo")}
-                    </Link>
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="link"
-                    className="flex-1 bg-transparent border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  >
-                    <Link
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center"
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center"
+                      >
+                        <ExternalLink size={16} className="mr-2" />
+                        {t("liveDemo")}
+                      </Link>
+                    </Button>
+                  )}
+                  {project.githubUrl && (
+                    <Button
+                      size="sm"
+                      variant="link"
+                      className="flex-1 bg-transparent border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     >
-                      <Github size={16} className="mr-2" />
-                      {t("code")}
-                    </Link>
-                  </Button>
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center"
+                      >
+                        <Github size={16} className="mr-2" />
+                        {t("code")}
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );
