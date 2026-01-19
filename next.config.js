@@ -11,6 +11,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ["zzrvmhxirmiemqxlflbt.supabase.co"],
+  },
 };
 
 export default withNextIntl(nextConfig);
