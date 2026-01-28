@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useAuth } from "@/contexts/auth-context";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -36,9 +36,13 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const router = useRouter();
+  const params = useParams();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const locale = (params.locale as string) || "en";
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -60,6 +64,9 @@ export default function LoginPage() {
     try {
       await login(data.email, data.password);
       toast.success("Welcome back!");
+      const redirectTo = searchParams.get("redirect") || "/admin";
+      router.push(`/${locale}${redirectTo}`);
+      router.refresh();
     } catch (error: any) {
       const errorMessage = error.message || "Invalid email or password";
       setError(errorMessage);

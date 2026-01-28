@@ -12,7 +12,14 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["zzrvmhxirmiemqxlflbt.supabase.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "zzrvmhxirmiemqxlflbt.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
   },
 };
 

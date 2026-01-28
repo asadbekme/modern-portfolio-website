@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { authService } from "@/services/auth-service";
 import { AuthUser } from "@/types/auth";
 
@@ -18,6 +18,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     authService.getSession().then((session) => {
@@ -40,13 +41,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     const data = await authService.login({ email, password });
     setUser(data.user);
-    router.refresh();
   };
 
   const logout = async () => {
     await authService.logout();
     setUser(null);
-    router.push("/admin/login");
+    const locale = pathname?.match(/^\/(en|ru|uz)/)?.[1] || "en";
+    router.push(`/${locale}/admin/login`);
     router.refresh();
   };
 
