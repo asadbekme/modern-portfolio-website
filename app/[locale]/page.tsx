@@ -1,5 +1,6 @@
 import {
   About,
+  BackgroundPattern,
   Contact,
   Footer,
   Header,
@@ -10,19 +11,21 @@ import {
 
 const Home = () => {
   return (
-    <div className="relative z-10">
-      <Header isHome={true} />
+    <BackgroundPattern>
+      <div className="relative z-10">
+        <Header isHome={true} />
 
-      <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        <About />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <Projects />
+          <Skills />
+          <About />
+          <Contact />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BackgroundPattern>
   );
 };
 

@@ -34,7 +34,7 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
-export default function LoginPage() {
+const AdminLoginPage = () => {
   const { login } = useAuth();
   const router = useRouter();
   const params = useParams();
@@ -169,4 +169,6 @@ export default function LoginPage() {
       </Card>
     </div>
   );
-}
+};
+
+export default AdminLoginPage;

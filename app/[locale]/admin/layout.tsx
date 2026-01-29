@@ -25,13 +25,13 @@ const sidebarItems = [
   { title: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
-export default function AdminLayout({
+const AdminLayout = ({
   children,
   params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
-}) {
+}) => {
   const pathname = usePathname();
   const { user, logout } = useAuth();
 
@@ -104,4 +104,6 @@ export default function AdminLayout({
       </main>
     </div>
   );
-}
+};
+
+export default AdminLayout;

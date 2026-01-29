@@ -1,89 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import {
-  SiJavascript,
-  SiTailwindcss,
-  SiReact,
-  SiTypescript,
-  SiNextdotjs,
-  SiGit,
-  SiReacthookform,
-  SiRedux,
-  SiReactquery,
-  SiFigma,
-  SiAntdesign,
-  SiShadcnui,
-  SiVercel,
-  SiSupabase,
-} from "react-icons/si";
+import { useTranslations, useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+import { skillService } from "@/services/skill-service";
+import { statService } from "@/services/stat-service";
+import { iconMap } from "@/lib/icon-map";
+import { Stat } from "@/types/stat";
+import { LocaleType } from "@/i18n/types";
 
 const Skills = () => {
   const t = useTranslations("skills");
+  const locale = useLocale() as LocaleType;
 
-  const technologies = [
-    {
-      name: "JavaScript",
-      icon: <SiJavascript />,
-      color: "from-[#F7DF1E] to-[#FFD600]",
-    }, // JS Yellow
-    {
-      name: "Tailwind CSS",
-      icon: <SiTailwindcss />,
-      color: "from-[#06B6D4] to-[#0E7490]",
-    }, // Tailwind Cyan
-    { name: "React", icon: <SiReact />, color: "from-[#61DAFB] to-[#1E90FF]" }, // React Blue
-    {
-      name: "TypeScript",
-      icon: <SiTypescript />,
-      color: "from-[#3178C6] to-[#1E40AF]",
-    }, // TS Blue
-    {
-      name: "Supabase",
-      icon: <SiSupabase />,
-      color: "from-[#2D6A4F] to-[#95D5B2]",
-    }, // Supabase green
-    { name: "Next.js", icon: <SiNextdotjs />, color: "from-gray-800 to-black" }, // Next Black
-    { name: "Git", icon: <SiGit />, color: "from-[#F05033] to-[#B91C1C]" }, // Git Orange-Red
-    {
-      name: "React Hook Form",
-      icon: <SiReacthookform />,
-      color: "from-[#EC5990] to-[#BE185D]",
-    }, // RHF Pink
-    {
-      name: "Redux Toolkit",
-      icon: <SiRedux />,
-      color: "from-[#764ABC] to-[#4B0082]",
-    }, // Redux Purple
-    {
-      name: "React Query",
-      icon: <SiReactquery />,
-      color: "from-[#FF4154] to-[#C81E1E]",
-    }, // React Query Red
-    { name: "Figma", icon: <SiFigma />, color: "from-[#F24E1E] to-[#A259FF]" }, // Figma Gradient
-    {
-      name: "Ant Design",
-      icon: <SiAntdesign />,
-      color: "from-[#1890FF] to-[#0050B3]",
-    }, // Ant Blue
-    {
-      name: "Shadcn UI",
-      icon: <SiShadcnui />,
-      color: "from-[#8B5CF6] to-[#6D28D9]",
-    }, // Shadcn Purple
-    { name: "Vercel", icon: <SiVercel />, color: "from-gray-700 to-black" }, // Vercel Black
-  ];
+  const { data: skills = [], isLoading: isLoadingSkills } = useQuery({
+    queryKey: ["published-skills"],
+    queryFn: skillService.getPublishedSkills,
+  });
 
-  const stats = [
-    { number: "2+", label: t("stats.experience") },
-    { number: "20+", label: t("stats.projects") },
-    { number: "15+", label: t("stats.technologies") },
-    { number: "100%", label: t("stats.satisfaction") },
-  ];
+  const { data: stats = [], isLoading: isLoadingStats } = useQuery({
+    queryKey: ["published-stats"],
+    queryFn: statService.getPublishedStats,
+  });
 
-  // Duplicate the array to create seamless infinite scroll
-  const duplicatedTechnologies = [...technologies, ...technologies];
+  const getLocalizedLabel = (stat: Stat) => {
+    const key = `label_${locale}` as keyof Stat;
+    return stat[key] as string;
+  };
+
+  const duplicatedSkills = [...skills, ...skills];
+  const reversedSkills = [...skills].reverse();
+  const duplicatedReversed = [...reversedSkills, ...reversedSkills];
 
   return (
     <section id="skills" className="py-20 overflow-hidden">
@@ -105,78 +52,105 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Infinite Scrolling Carousel */}
-        <div className="relative">
-          {/* Gradient overlays for smooth fade effect */}
-          <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10" />
-          <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
-
-          {/* First row - moving right */}
-          <motion.div
-            className="flex space-x-8 mb-8"
-            animate={{
-              x: [0, -50 * technologies.length],
-            }}
-            transition={{
-              x: {
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedTechnologies.map((tech, index) => (
-              <motion.div
-                key={`${tech.name}-${index}`}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
+        {isLoadingSkills ? (
+          <div className="flex justify-center py-12">
+            <div className="flex space-x-8">
+              {[1, 2, 3, 4, 5].map((i) => (
                 <div
-                  className={`size-10 rounded-full bg-gradient-to-r ${tech.color} flex items-center justify-center text-white text-lg font-bold`}
+                  key={i}
+                  className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full animate-pulse"
                 >
-                  {tech.icon}
+                  <div className="size-10 rounded-full bg-gray-200 dark:bg-gray-700" />
+                  <div className="h-4 w-20 bg-gray-200 dark:bg-gray-700 rounded" />
                 </div>
-                <span className="text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
-                  {tech.name}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
+        ) : skills.length > 0 ? (
+          <div className="relative">
+            {/* Gradient overlays for smooth fade effect */}
+            <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10" />
+            <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
 
-          {/* Second row - moving left */}
-          <motion.div
-            className="flex space-x-8"
-            animate={{
-              x: [-50 * technologies.length, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedTechnologies.reverse().map((tech, index) => (
-              <motion.div
-                key={`${tech.name}-reverse-${index}`}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-r ${tech.color} flex items-center justify-center text-white text-lg font-bold`}
-                >
-                  {tech.icon}
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
-                  {tech.name}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+            {/* First row - moving right */}
+            <motion.div
+              className="flex space-x-8 mb-8"
+              animate={{
+                x: [0, -50 * skills.length],
+              }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedSkills.map((skill, index) => {
+                const Icon = iconMap[skill.icon_key];
+                return (
+                  <motion.div
+                    key={`${skill.id}-${index}`}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div
+                      className="size-10 rounded-full flex items-center justify-center text-white text-lg font-bold"
+                      style={{
+                        background: `linear-gradient(to right, ${skill.color_from}, ${skill.color_to})`,
+                      }}
+                    >
+                      {Icon && <Icon />}
+                    </div>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Second row - moving left */}
+            <motion.div
+              className="flex space-x-8"
+              animate={{
+                x: [-50 * skills.length, 0],
+              }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 25,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedReversed.map((skill, index) => {
+                const Icon = iconMap[skill.icon_key];
+                return (
+                  <motion.div
+                    key={`${skill.id}-reverse-${index}`}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="flex-shrink-0 flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg font-bold"
+                      style={{
+                        background: `linear-gradient(to right, ${skill.color_from}, ${skill.color_to})`,
+                      }}
+                    >
+                      {Icon && <Icon />}
+                    </div>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
+                      {skill.name}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+        ) : null}
 
         {/* Stats section */}
         <div className="container mx-auto px-4">
@@ -187,20 +161,32 @@ const Skills = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 lg:gap-8 mt-16"
           >
-            {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                whileHover={{ scale: 1.05 }}
-                className="text-center p-3 md:p-4 lg:p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl"
-              >
-                <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 font-medium line-clamp-2">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
+            {isLoadingStats
+              ? [1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="text-center p-3 md:p-4 lg:p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl animate-pulse"
+                  >
+                    <div className="h-10 w-16 mx-auto bg-gray-200 dark:bg-gray-600 rounded mb-2" />
+                    <div className="h-4 w-24 mx-auto bg-gray-200 dark:bg-gray-600 rounded" />
+                  </div>
+                ))
+              : stats.length > 0
+                ? stats.map((stat) => (
+                    <motion.div
+                      key={stat.id}
+                      whileHover={{ scale: 1.05 }}
+                      className="text-center p-3 md:p-4 lg:p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl"
+                    >
+                      <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                        {stat.number}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 font-medium line-clamp-2">
+                        {getLocalizedLabel(stat)}
+                      </p>
+                    </motion.div>
+                  ))
+                : null}
           </motion.div>
         </div>
       </div>

@@ -9,10 +9,11 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { projectService } from "@/services/project-service";
 import { Project } from "@/types/project";
+import { LocaleType } from "@/i18n/types";
 
 const Projects = () => {
   const t = useTranslations("projects");
-  const locale = useLocale() as "en" | "ru" | "uz";
+  const locale = useLocale() as LocaleType;
 
   const { data: projects = [], isLoading } = useQuery({
     queryKey: ["published-projects"],

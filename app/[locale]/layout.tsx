@@ -11,7 +11,6 @@ import { QueryProvider } from "@/providers/query-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
-import { BackgroundPattern } from "./_components";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -86,10 +85,8 @@ export default async function RootLayout({
                 enableSystem
                 disableTransitionOnChange
               >
-                <BackgroundPattern>
-                  {children}
-                  <Toaster position="top-right" richColors />
-                </BackgroundPattern>
+                {children}
+                <Toaster position="top-right" richColors />
               </ThemeProvider>
             </NextIntlClientProvider>
           </AuthProvider>

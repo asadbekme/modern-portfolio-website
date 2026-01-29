@@ -38,6 +38,42 @@ export interface Database {
         >;
         Update: Partial<Database["public"]["Tables"]["admin_users"]["Insert"]>;
       };
+      skills: {
+        Row: {
+          id: string;
+          name: string;
+          icon_key: string;
+          color_from: string;
+          color_to: string;
+          order_index: number;
+          is_published: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["skills"]["Row"],
+          "id" | "created_at" | "updated_at"
+        >;
+        Update: Partial<Database["public"]["Tables"]["skills"]["Insert"]>;
+      };
+      stats: {
+        Row: {
+          id: string;
+          number: string;
+          label_en: string;
+          label_ru: string;
+          label_uz: string;
+          order_index: number;
+          is_published: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["stats"]["Row"],
+          "id" | "created_at" | "updated_at"
+        >;
+        Update: Partial<Database["public"]["Tables"]["stats"]["Insert"]>;
+      };
     };
   };
 }

@@ -2,13 +2,26 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { projectService } from "@/services/project-service";
+import { skillService } from "@/services/skill-service";
+import { statService } from "@/services/stat-service";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FolderKanban, Eye, EyeOff } from "lucide-react";
+import { FolderKanban, Eye, EyeOff, Code2, BarChart3 } from "lucide-react";
+import Link from "next/link";
 
-export default function AdminDashboard() {
+const AdminDashboard = () => {
   const { data: projects = [] } = useQuery({
     queryKey: ["projects"],
     queryFn: projectService.getAllProjects,
+  });
+
+  const { data: skills = [] } = useQuery({
+    queryKey: ["skills"],
+    queryFn: skillService.getAllSkills,
+  });
+
+  const { data: stats = [] } = useQuery({
+    queryKey: ["stats"],
+    queryFn: statService.getAllStats,
   });
 
   const publishedCount = projects.filter((p) => p.is_published).length;
@@ -23,7 +36,7 @@ export default function AdminDashboard() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -60,6 +73,32 @@ export default function AdminDashboard() {
             <p className="text-xs text-muted-foreground">Hidden projects</p>
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Skills</CardTitle>
+            <Code2 className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{skills.length}</div>
+            <p className="text-xs text-muted-foreground">
+              Technologies in carousel
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Stats</CardTitle>
+            <BarChart3 className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.length}</div>
+            <p className="text-xs text-muted-foreground">
+              Statistics displayed
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       <Card className="mt-6">
@@ -68,18 +107,29 @@ export default function AdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <a
-              href="./projects"
+            <Link
+              href="/admin/projects"
               className="block p-3 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               <div className="font-medium">Manage Projects</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Add, edit, or delete portfolio projects
               </div>
-            </a>
+            </Link>
+            <Link
+              href="/admin/skills"
+              className="block p-3 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div className="font-medium">Manage Skills</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Add, edit, or delete skills in the carousel
+              </div>
+            </Link>
           </div>
         </CardContent>
       </Card>
     </div>
   );
-}
+};
+
+export default AdminDashboard;

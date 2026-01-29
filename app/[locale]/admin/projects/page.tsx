@@ -1,6 +1,6 @@
 import { ProjectsTable } from "@/components/admin/project-table";
 
-export default function AdminProjectsPage() {
+const AdminProjectsPage = () => {
   return (
     <div className="p-8">
       <div className="mb-8">
@@ -12,4 +12,6 @@ export default function AdminProjectsPage() {
       <ProjectsTable />
     </div>
   );
-}
+};
+
+export default AdminProjectsPage;
