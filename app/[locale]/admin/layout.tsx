@@ -42,8 +42,8 @@ const AdminLayout = ({
   }
 
   return (
-    <div className="relative z-10 flex min-h-screen">
-      <aside className="w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 fixed h-full flex flex-col">
+    <div className="flex min-h-screen bg-white dark:bg-gray-900">
+      <aside className="w-64 border-r border-gray-200 dark:border-gray-800 fixed h-full flex flex-col">
         <div className="p-6 border-b border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             Admin Panel

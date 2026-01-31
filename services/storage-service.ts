@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
 
 const BUCKET_NAME = "project-images";
+const RESUME_BUCKET = "resumes";
 
 export const storageService = {
   async uploadImage(file: File, folder: string = "projects"): Promise<string> {
@@ -66,5 +67,66 @@ export const storageService = {
     } catch {
       return false;
     }
+  },
+
+  // Resume upload functions
+  async uploadResume(file: File): Promise<string> {
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      throw new Error("Please upload a PDF or Word document");
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      throw new Error("Resume size should be less than 10MB");
+    }
+
+    const fileExt = file.name.split(".").pop();
+    const fileName = `resume-${Date.now()}.${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from(RESUME_BUCKET)
+      .upload(fileName, file, {
+        cacheControl: "3600",
+        upsert: true,
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data } = supabase.storage
+      .from(RESUME_BUCKET)
+      .getPublicUrl(fileName);
+
+    return data.publicUrl;
+  },
+
+  async deleteResume(url: string): Promise<void> {
+    try {
+      const urlObj = new URL(url);
+      const pathParts = urlObj.pathname.split(`${RESUME_BUCKET}/`);
+      const filePath = pathParts[1];
+
+      if (!filePath) return;
+
+      const { error } = await supabase.storage
+        .from(RESUME_BUCKET)
+        .remove([filePath]);
+
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error deleting resume:", error);
+    }
+  },
+
+  async updateResume(oldUrl: string | null, newFile: File): Promise<string> {
+    const newUrl = await this.uploadResume(newFile);
+    if (oldUrl && oldUrl.includes(RESUME_BUCKET)) {
+      await this.deleteResume(oldUrl);
+    }
+    return newUrl;
   },
 };

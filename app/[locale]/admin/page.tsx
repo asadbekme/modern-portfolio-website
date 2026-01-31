@@ -5,7 +5,14 @@ import { projectService } from "@/services/project-service";
 import { skillService } from "@/services/skill-service";
 import { statService } from "@/services/stat-service";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FolderKanban, Eye, EyeOff, Code2, BarChart3 } from "lucide-react";
+import {
+  FolderKanban,
+  Eye,
+  EyeOff,
+  Code2,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
 
 const AdminDashboard = () => {
@@ -123,6 +130,15 @@ const AdminDashboard = () => {
               <div className="font-medium">Manage Skills</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Add, edit, or delete skills in the carousel
+              </div>
+            </Link>
+            <Link
+              href="/admin/hero"
+              className="block p-3 rounded-lg border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div className="font-medium">Hero Section</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Edit the hero section content and settings
               </div>
             </Link>
           </div>

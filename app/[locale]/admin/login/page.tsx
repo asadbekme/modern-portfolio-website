@@ -77,7 +77,7 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="relative z-10 min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
@@ -156,15 +156,6 @@ const AdminLoginPage = () => {
               </Button>
             </form>
           </Form>
-
-          <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-            <p>Demo credentials:</p>
-            <p className="font-mono text-xs mt-1">
-              Email: admin@example.com
-              <br />
-              Password: admin123
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>

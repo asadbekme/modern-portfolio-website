@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-function useTypingText(fullText: string) {
+const useTypingText = (fullText: string) => {
   const [typingText, setTypingText] = useState("");
 
   useEffect(() => {
+    // Reset typing text when fullText changes
+    setTypingText("");
+
+    if (!fullText) return;
+
     let index = 0;
     const timer = setInterval(() => {
       if (index < fullText.length) {
@@ -17,9 +22,9 @@ function useTypingText(fullText: string) {
     }, 100);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   return typingText;
-}
+};
 
 export default useTypingText;
