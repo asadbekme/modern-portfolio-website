@@ -2,26 +2,67 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
 import useTypingText from "@/hooks/use-typing-text";
+import { aboutService } from "@/services/about-service";
+import { About as AboutType } from "@/types/about";
+import { LocaleType } from "@/i18n/types";
 
 const About = () => {
-  const t = useTranslations("about");
-  const fullText = t("description");
+  const locale = useLocale() as LocaleType;
+
+  const { data: about, isLoading } = useQuery({
+    queryKey: ["about"],
+    queryFn: aboutService.getPublishedAbout,
+  });
+
+  // Get localized content helper
+  const getLocalized = (fieldBase: string): string => {
+    if (!about) return "";
+    const key = `${fieldBase}_${locale}` as keyof AboutType;
+    const fallbackKey = `${fieldBase}_en` as keyof AboutType;
+    return (about[key] as string) || (about[fallbackKey] as string) || "";
+  };
+
+  const fullText = getLocalized("description");
   const typingText = useTypingText(fullText);
 
   const data = [
-    { icon: "📍", text: t("location") },
-    { icon: "💼", text: t("availability") },
-    { icon: "🎓", text: t("education") },
+    { icon: "📍", text: getLocalized("location") },
+    { icon: "💼", text: getLocalized("availability") },
+    { icon: "🎓", text: getLocalized("education") },
   ];
 
   const services = [
-    t("services.webDevelopment"),
-    t("services.uiuxDesign"),
-    t("services.mobileApps"),
-    t("services.performanceOptimization"),
+    getLocalized("service_1"),
+    getLocalized("service_2"),
+    getLocalized("service_3"),
+    getLocalized("service_4"),
   ];
+
+  if (isLoading) {
+    return (
+      <section id="about" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse text-center mb-16">
+            <div className="h-12 w-48 bg-gray-200 dark:bg-gray-700 rounded mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="w-80 h-80 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto" />
+            <div className="space-y-4">
+              <div className="h-24 bg-gray-200 dark:bg-gray-700 rounded" />
+              <div className="h-16 bg-gray-200 dark:bg-gray-700 rounded" />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!about) {
+    return null;
+  }
 
   return (
     <section id="about" className="py-20">
@@ -35,7 +76,7 @@ const About = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              {t("title")}
+              {getLocalized("title")}
             </span>
           </h2>
         </motion.div>
@@ -54,8 +95,8 @@ const About = () => {
                 className="relative size-80 mx-auto"
               >
                 <Image
-                  src="/my-photo.png"
-                  alt="Asadbek Rakhimov"
+                  src={about.image_url || "/my-photo.png"}
+                  alt="Profile Photo"
                   fill
                   className="rounded-full object-cover shadow-2xl"
                 />
@@ -98,7 +139,7 @@ const About = () => {
 
             <div className="pt-6">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                {t("whatIDo")}
+                {getLocalized("what_i_do")}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {services.map((item, index) => (
