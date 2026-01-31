@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
+  BriefcaseBusiness,
   FolderKanban,
   User,
   Mail,
@@ -18,6 +19,7 @@ import {
 
 const sidebarItems = [
   { title: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { title: "Hero", href: "/admin/hero", icon: BriefcaseBusiness },
   { title: "Projects", href: "/admin/projects", icon: FolderKanban },
   { title: "Skills", href: "/admin/skills", icon: Code2 },
   { title: "About", href: "/admin/about", icon: User },
